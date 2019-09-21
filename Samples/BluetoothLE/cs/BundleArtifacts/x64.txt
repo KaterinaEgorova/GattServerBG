@@ -1,0 +1,2 @@
+MainPackage=C:\GattServerBackgroundTask\Samples\BluetoothLE\cs\bin\x64\Debug\BluetoothLE_1.0.6.0_x64_Debug.msix
+SymbolPackage=C:\GattServerBackgroundTask\Samples\BluetoothLE\cs\obj\x64\Debug\Symbols\BluetoothLE_1.0.6.0_x64_Debug.appxsym

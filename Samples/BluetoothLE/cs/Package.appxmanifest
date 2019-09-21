@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  IgnorableNamespaces="uap mp uap3">
+
+    <Identity
+      Name="GattServerBackgroundTask"
+      Publisher="CN=Admin"
+      Version="1.0.6.0" />
+
+    <mp:PhoneIdentity PhoneProductId="a2214a83-6d31-41dd-b75f-0b8e56be182d" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+    <Properties>
+        <DisplayName>gatt server background task</DisplayName>
+        <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
+        <Logo>Assets\StoreLogo-sdk.png</Logo>
+    </Properties>
+
+    <Dependencies>
+      <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+    </Dependencies>
+
+    <Resources>
+        <Resource Language="x-generate"/>
+    </Resources>
+
+    <Applications>
+        <Application Id="GattServer.App"
+          Executable="$targetnametoken$.exe"
+          EntryPoint="GattServer.App">
+            <uap:VisualElements
+              DisplayName="gatt server bg task"
+              Square150x150Logo="Assets\squareTile-sdk.png"
+              Square44x44Logo="Assets\SmallTile-sdk.png"
+              Description="gatt server bg task"
+              BackgroundColor="#00b2f0">
+                <uap:SplashScreen Image="Assets\Splash-sdk.png" />
+                <uap:DefaultTile>
+                    <uap:ShowNameOnTiles>
+                        <uap:ShowOn Tile="square150x150Logo" />
+                    </uap:ShowNameOnTiles>
+                </uap:DefaultTile>
+            </uap:VisualElements>
+            <Extensions>
+                <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.GattServerTask">
+                    <BackgroundTasks>
+                        <Task Type="bluetooth"/>
+                        <Task Type="deviceConnectionChange"/>
+                        <Task Type="systemEvent"/>
+                    </BackgroundTasks>
+                </Extension>
+                <Extension Category="windows.backgroundTasks" EntryPoint="TaskMediaPlay.TileSongsTask">
+                    <BackgroundTasks>
+                        <Task Type="bluetooth"/>
+                        <Task Type="deviceConnectionChange"/>
+                        <Task Type="systemEvent"/>
+                    </BackgroundTasks>
+                </Extension>
+                <Extension Category="windows.backgroundTasks" EntryPoint="Tasks.TimerTask">
+                    <BackgroundTasks>
+                        <Task Type="systemEvent"/>
+                        <Task Type="bluetooth"/>
+                    </BackgroundTasks>
+                </Extension>
+            </Extensions>
+        </Application>
+    </Applications>
+
+    <Capabilities>
+        <Capability Name="internetClient" />
+        <uap3:Capability Name="backgroundMediaPlayback"/>
+        <!--BT_Code: Always declare the bluetooth capability when using Bluetooth-->
+        <DeviceCapability Name="bluetooth" />
+    </Capabilities>
+</Package>

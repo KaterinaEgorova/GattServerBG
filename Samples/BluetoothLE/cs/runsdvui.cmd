@@ -1,0 +1,2 @@
+cd /d "C:\GattServerBackgroundTask\Samples\BluetoothLE\cs" &msbuild "BluetoothLE.csproj" /t:sdvViewer /p:configuration="Release" /p:platform="x64" /p:SolutionDir="C:\GattServerBackgroundTask\Samples\BluetoothLE\cs" 
+exit %errorlevel% 
